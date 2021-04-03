@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackiethon 2021 Project</title>
+    <link rel="stylesheet" type="text/css" href="main.css"/>
+</head>
+<body onload="startTime()">
+    <div class="line">
+        <div class="time">
+          <span id="time">ERROR</span>
+          <span id="date">ERROR</span>
+        </div>
+      </div>
+    <style>
+        body {
+          background-image: url('/Users/xenotion/Desktop/Hackiethon_Workshop_HTMLCSS/city-the-city-lights-lights-wallpaper-preview.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: 100% 100%;
+        }
+        </style>
+    <header>
+        <a href="index2.html">
+        </a>
+                <div class="headertitle">
+                    <a href="index.html">Relax and Enjoy!</a>
+                </div>
+		</header>
+
+	<div id="myDIV" class="header">
+		<h2>To Do List</h2>
+		<input type="text" id="myInput" placeholder="Add your to do list here">
+		<span onclick="newElement()" class="addBtn">Add</span>
+	  </div>
+	 
+	  <ul id="myUL">
+	  </ul>
+
+<!-- Called of font style  file -->
+<div class="wholething">
+<link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
+
+
+    <h2>Lo-Fi MUSIC</h2>
+    <div class="container-audio">
+        <audio controls  loop autoplay>
+                   <source src="/Users/xenotion/Desktop/Hackiethon_Workshop_HTMLCSS/yt1s.com - Lofi hip hop mix  Beats to RelaxStudy to 2018.mp3" type="audio/mp3">
+                   Your browser dose not Support the audio Tag
+               </audio>
+    </div>
+    <div class="container-audio">
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+        <div class="colum1">
+            <div class="row"></div>
+        </div>
+    </div>
+  </div>
+
+
+	<script>
+		var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+
+  document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
+
+  var t = setTimeout(startTime, 500);
+  n = new Date();
+  y = n.getFullYear();
+  m = n.getMonth() + 1;
+  d = n.getDate();
+
+  document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+}
+
+function checkTime(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+setInterval(() => {
+  document.title = new Date().toLocaleTimeString();
+}, 1);
+	</script>
+    
+ </body>
+ </html>
