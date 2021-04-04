@@ -7,7 +7,6 @@ html{
 
 body {
     background: linear-gradient(to left, #7700aa, #8800ff);
-    background-color: #fea3aa ;
     font-family: Allerta;
     font-size: 22px;
     text-align:center;
@@ -172,6 +171,7 @@ nav {
 	float: left;
 	font-size: 16px;
     opacity: 0.5;
+    background-color: #000;
 	
   }
   
