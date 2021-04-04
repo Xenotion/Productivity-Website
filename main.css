@@ -479,9 +479,9 @@ audio:nth-child(2), audio:nth-child(4), audio:nth-child(6) {
 
 
 div.time {
-    text-align: center;
+    width: 420px;
+    text-align: left;
     font-size: 120px;
-    position: relative;
     color: white;
     letter-spacing: 2px;
     opacity: 1;
@@ -490,7 +490,7 @@ div.time {
   div.line {
     line-height: 1;
     position: absolute;
-    right:44%;
+    right:46%;
     top: 43%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
