@@ -28,10 +28,11 @@ h1{
   top: 110px;
 }
 #controls{
+  width: 155px;
   font-family: Allerta;
   position:absolute;
   bottom: 85px;
-  left: 345px;
+  right: -7px;
 }
 #preset{
   width: 100px;
