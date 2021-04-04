@@ -1,0 +1,56 @@
+body{
+  margin-top: 20px;
+  background: #222;
+}
+.centered {
+  margin: 0px auto;
+  text-align: center;
+}
+h1{
+  color: white;
+  font-size: 45px;
+  font-family: Open Sans;
+}
+#time{
+  color: white;
+  font-family: Open Sans;
+  font-size: 100px;
+}
+#preset{
+  width: 100px;
+}
+.well{
+  background:transparent;
+  padding: 0px;
+  width: 50px;
+}
+#settings{
+  color: white;
+  font-family: Open Sans;
+  font-size: 24px;
+/*   background-color: blue; */
+  width: 150px;
+  height: 110px;
+}
+.btn:hover{
+  color: #ddd;
+}
+#break-well{
+  margin: 0px 15px 0px 15px;
+}
+#session-well{
+  margin-bottom:0px;
+}
+.des{
+    margin: 0px auto;
+  text-align: center;
+}
+.descrp{
+  display:inline;
+  margin-right: 12px;
+   margin-left: 12px;
+  color: white;
+}
+#info{
+  margin-top: 20px;
+}
