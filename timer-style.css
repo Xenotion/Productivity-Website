@@ -6,16 +6,32 @@ body{
 .centered {
   margin: 0px auto;
   text-align: center;
+  position: absolute;
+  left: 51%;
+  top: 23%;
+  height: 370px;
+  width: 480px;
 }
 h1{
   color: white;
   font-size: 45px;
   font-family: Allerta;
+  position:absolute;
+  left:40px;
 }
 #pomtime{
   color: white;
   font-family: Allerta;
-  font-size: 100px;
+  font-size: 120px;
+  text-align: center;
+  position:absolute;
+  top: 110px;
+}
+#controls{
+  font-family: Allerta;
+  position:absolute;
+  bottom: 85px;
+  left: 345px;
 }
 #preset{
   width: 100px;
@@ -29,9 +45,11 @@ h1{
   color: white;
   font-family: Allerta;
   font-size: 24px;
-/*   background-color: blue; */
   width: 150px;
   height: 110px;
+  position:absolute;
+  top:130px;
+  left:335px;
 }
 .btn:hover{
   color: #ddd;
@@ -43,15 +61,18 @@ h1{
   margin-bottom:0px;
 }
 .des{
-    margin: 0px auto;
-  text-align: center;
+  position:absolute;
+  top:90px;
+  left:343px;
 }
 .descrp{
   display:inline;
-  margin-right: 12px;
-   margin-left: 12px;
+  margin-right: 10px;
+   margin-left: 10px;
   color: white;
 }
 #info{
-  margin-top: 20px;
+  position:absolute;
+  bottom:30px;
+  left: 12px;
 }
