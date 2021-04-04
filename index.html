@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="main.css"/>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'>
-  <link rel="stylesheet" href="https://drive.google.com/uc?export=download&id=1IdyJqbrwIWhmu133RZVS4jTZN4Yuqvzg">
+  <link rel="stylesheet" href="https://drive.google.com/uc?export=download&id=1-W9B-1rYbtS5xI88x_dMoLdjltNUoSkt">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
   <link href='https://fonts.googleapis.com/css?family=Allerta' rel='stylesheet'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
@@ -16,7 +16,7 @@
 <body onload="startTime()">
   <div class="line">
     <div class="time">
-      <span id="time">ERROR</span>
+      <span id="time">LOADING</span>
     </div>
   </div>
   <style>
@@ -127,49 +127,154 @@
   </div>
 
   <div class="centered">
-  <h1>Pomodoro Timer</h1>
-  <div id="settings" class="centered">
-    <div id="break-well" class="well col-xs-1">
-      <div id="break-up" class="btn">+
-      </div> <!-- /break up-->
-      <div id="break">5
-      </div> <!-- /break -->
-      <div id="break-down" class="btn">-
-      </div> <!-- /break down-->
-    </div> <!-- /break well-->
-
-    <div id="session-well" class="well col-xs-1">
-      <div id="session-up"  title="Resets Timer" class="btn">+
-      </div> <!-- /session up-->
-      <div id="session">25
-      </div> <!-- /session -->
-      <div id="session-down"  title="Resets Timer" class="btn">-
-      </div> <!-- /session down-->
-    </div> <!-- /session well--> 
-
-  </div> <!-- /settings -->
-
-  <div  class="des">
-    <h5 class="descrp">break</h5><h5 class="descrp">session</h5>
-  </div>
-
-  <div id="time">25:00</div>
-  <div id="controls">
-    <div class="btn btn-primary" id="play-pause">Start</div>
-    <div class="btn btn-danger" id="reset">Reset</div>
-  </div> <!-- /controls -->
-  <div id="info">
-    <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank"><i class="fa fa-info-circle"></i>
-    Read about Pomodoro time management</a>
-  </div>
-  </div> <!-- /centered -->
-  <div class="text-center" style="padding-top: 100px; color:white;">
-  <a href="https://github.com/valmassoi" target="_blank">by valmassoi</a>
-  </div>
+    <h1>Pomodoro Timer</h1>
+    <div id="settings" class="centered">
+      <div id="break-well" class="well col-xs-1">
+        <div id="break-up" class="btn">+
+        </div> <!-- /break up-->
+        <div id="break">5
+        </div> <!-- /break -->
+        <div id="break-down" class="btn">-
+        </div> <!-- /break down-->
+      </div> <!-- /break well-->
+  
+      <div id="session-well" class="well col-xs-1">
+        <div id="session-up"  title="Resets Timer" class="btn">+
+        </div> <!-- /session up-->
+        <div id="session">25
+        </div> <!-- /session -->
+        <div id="session-down"  title="Resets Timer" class="btn">-
+        </div> <!-- /session down-->
+      </div> <!-- /session well--> 
+  
+    </div> <!-- /settings -->
+  
+    <div  class="des">
+      <h5 class="descrp">break</h5><h5 class="descrp">session</h5>
+    </div>
+  
+    <div id="pomtime">25:00</div>
+    <div id="controls">
+      <div class="btn btn-primary" id="play-pause">Start</div>
+      <div class="btn btn-danger" id="reset">Reset</div>
+    </div> <!-- /controls -->
+    <div id="info">
+      <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank"><i class="fa fa-info-circle"></i>
+      Read about Pomodoro time management</a>
+    </div>
+    </div> <!-- /centered -->
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
   <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
-  <script src="./timer-script.js"></script>
+  <script>
+  var spacebar = "play";//play pause toggle
+  var pomtime = 1500;
+  var sessionTime = 1500;
+  var breakTime = 300;
+  var workfun = "session";//session or break
+  var counter;
+  var coffee="work";//session break toggle
+  $(function() {
+    document.title = "Work";
+  });
+
+  $("#play-pause").on("click", function(){
+    if (spacebar=="play"){
+      $("#play-pause").html("Pause");$("#play-pause").addClass("btn-info");
+      spacebar = "pause";
+      //run play function
+      counter=setInterval(timer, 1000); //run every 1 second
+    }
+    else{
+      $("#play-pause").html("Resume");$("#play-pause").removeClass("btn-info");
+      spacebar = "play";
+      clearTimeout(counter);
+    }
+  });
+
+  function timer()
+  {
+    pomtime-=1;
+    if (pomtime <= -1){
+      console.log(coffee);
+        clearInterval(counter);
+        var audio = new Audio('http://blog.tmcnet.com/blog/tom-keating/sounds/24-ring-tone-1.mp3');
+        audio.play();
+      //switch break or session
+      if (coffee == "work"){
+        console.log(">funtime");
+        window.document.title = "Break";
+        coffee = "funtime";
+        pomtime = breakTime;
+        counter=setInterval(timer, 1000);
+      }
+      else{
+        console.log(">work");
+        window.document.title = "Work";
+        coffee = "work";
+        pomtime = sessionTime;
+        counter=setInterval(timer, 1000);
+      }
+    }
+    else{
+      var minSec = convertTime(pomtime);
+    $("#pomtime").html(minSec);
+    }
+  }
+
+  // ---- Convert Time ---- //
+
+  function convertTime(pomtime){
+    var minutes = Math.floor(pomtime/60);
+    var seconds = pomtime - minutes * 60;
+    return minutes + ':' + seconds;
+  }
+
+  // ---- RESET ---- //
+
+  $("#reset").on("click", function(){
+    reset();
+  });
+
+  function reset(){
+    $("#play-pause").html("Start");$("#play-pause").removeClass("btn-info");
+    spacebar = "play";
+    $("#pomtime").html(pomtime);
+    clearTimeout(counter);
+    pomtime = sessionTime;
+    var timeMin = pomtime/60;
+    $("#pomtime").html(timeMin+":00");
+    }
+
+  // ---- SETTINGS ---- //
+  $("#session-up").on("click", function(){
+    reset();
+    pomtime+=60;
+    sessionTime = pomtime;
+    sessionMin = sessionTime/60;
+    $("#session").html(sessionMin);
+    $("#pomtime").html(sessionMin + ":00");
+  });
+  $("#session-down").on("click", function(){
+    reset();
+    if(pomtime>60){pomtime-=60;}
+    sessionTime = pomtime;
+    sessionMin = sessionTime/60;
+    $("#session").html(sessionMin);
+    $("#pomtime").html(sessionMin + ":00");
+  });
+  $("#break-up").on("click", function(){
+    breakTime+=60;
+    var breakMin = breakTime/60;
+    $("#break").html(breakMin);
+  });
+  $("#break-down").on("click", function(){
+    if(breakTime>60){breakTime-=60;}
+    var breakMin = breakTime/60;
+    $("#break").html(breakMin);
+  });
+// ---- /settings ---- //
+  </script>
   <script>
   var myNodelist = document.getElementsByTagName("LI");
   var i;
